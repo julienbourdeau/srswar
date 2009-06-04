@@ -149,6 +149,25 @@ public class GraphicsFile {
 	}
 	
 	/**
+	 * Returns the String content of the given file.
+	 * @param name The name of the file.
+	 * @return A String object.
+	 * @throws IOException
+	 */
+	public String getString(String name) throws IOException
+	{
+		Slice s = getSlice(name);
+		if(s.size > 14) throw new IOException("Invalid Format");
+		byte[] array = new byte[s.size];
+		
+		file.seek(s.offset);
+		file.read(array);
+		
+		array[array.length-1] = ' ';
+		return new String(array, "US-ASCII");
+	}
+	
+	/**
 	 * Returns a Vector object containing all the names of the files, as String
 	 * objects.
 	 * @return The list of the names of the files.
