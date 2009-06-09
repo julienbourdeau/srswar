@@ -22,8 +22,6 @@ public class Main implements ScenarioDialogListener {
 	}
 
 	public void scenarioChosen(Scenario s) {
-		System.out.println("Called scenarioChosen");
-		
 		MainWindow wnd = new MainWindow(800, 600);
 		
 		Game g = new Game(wnd);

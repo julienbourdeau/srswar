@@ -138,12 +138,10 @@ public class Game {
 	{
 		s.loadBoard(board);
 		try {
-			System.out.println("Loading map...");
 			map = new Map(s.getWorld());
 			map.readFully();
 			board.setMap(map);
-			System.out.println("done.");
-		} catch (Exception e) {
+			} catch (Exception e) {
 			e.printStackTrace();
 		} 
 	}

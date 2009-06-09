@@ -39,9 +39,6 @@ public class Map {
 		data = new BufferedImage[width][height];
 		types = new int[width][height];
 		
-		System.out.println(new String("Dimensions: ")
-			.concat(String.valueOf(width))
-			.concat("x").concat(String.valueOf(height)));
 	}
 	
 	public Image getMiniMap() throws IOException
@@ -65,7 +62,6 @@ public class Map {
 	{
 		f.seek(9+width*height*3);
 		short nTerrains = LittleEndianIO.readShort(f);
-		System.out.println(nTerrains);
 		f.seek(11+width*height*3+nTerrains*64*64);
 		
 		for(int i=0; i<256; i++)
