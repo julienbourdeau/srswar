@@ -6,7 +6,6 @@ import files.Map;
 import gamelogic.Board;
 import gamelogic.BoardListener;
 import gamelogic.PathFinder;
-import gamelogic.pathfinder.AStarPathFinder;
 import gamelogic.Player;
 import gamelogic.Square;
 
@@ -133,7 +132,7 @@ public class Unit {
 	 */
 	public void move(Square dest)
 	{
-		Vector<Square> path = AStarPathFinder.findPath(board, position, dest);
+		Vector<Square> path = PathFinder.findPath(board, position, dest);
 		if(path == null) return;
 		if(!canMove(path)) return;
 		int hCost = PathFinder.getHPathLength(board, position, path);

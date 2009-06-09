@@ -72,9 +72,8 @@ public class ImageLibrary {
 		Image img_move, img_shot, img_select, img_not;
 		
 		try{
-			//bg = ImageIO.read(new URL("file:///home/kbok/jmax/grass.png"));
 			hit = ImageIO.read(new File(Path.getPath().concat("fx/hit.png")));
-			explo = ImageIO.read(new File("fx/explo_small.png"));
+			explo = ImageIO.read(new File(Path.getPath().concat("fx/explo_small.png")));
 			
 			small_numbers = ImageIO.read(new File(Path.getPath().concat("graphics/small_numbers.png")));
 			small_icons = ImageIO.read(new File(Path.getPath().concat("graphics/small_icons.png")));
@@ -98,7 +97,7 @@ public class ImageLibrary {
 			// useless bg.setAccelerationPriority(1);
 		}catch(Exception e)
 		{
-			System.out.println(e);
+			e.printStackTrace();
 		}
 	}
 	
