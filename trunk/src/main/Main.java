@@ -2,6 +2,7 @@ package main;
 
 import java.io.IOException;
 
+import files.Path;
 import files.Scenario;
 import gamelogic.Game;
 import gui.MainWindow;
@@ -16,7 +17,7 @@ public class Main implements ScenarioDialogListener {
 	
 	private void run() throws IOException
 	{
-		ScenarioDialog d = new ScenarioDialog("/home/kbok/jmax_res/levels/");
+		ScenarioDialog d = new ScenarioDialog(Path.getPath().concat("scenarios/"));
 		d.addClient(this);
 	}
 

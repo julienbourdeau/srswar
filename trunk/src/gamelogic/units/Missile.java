@@ -5,6 +5,7 @@ import java.util.Vector;
 import gamelogic.PathFinder;
 import gamelogic.Player;
 import gamelogic.Square;
+import gamelogic.pathfinder.AStarPathFinder;
 
 public class Missile extends AttackUnit{
 	public Missile(Player p){
@@ -39,7 +40,7 @@ public class Missile extends AttackUnit{
 	
 	public void move(Square dest)
 	{
-		Vector<Square> path = PathFinder.findPath(getBoard(), getPosition(), dest);
+		Vector<Square> path = AStarPathFinder.findPath(getBoard(), getPosition(), dest);
 		if(path == null) return;
 		if(!canMove(path)) return;
 		curShots = 0;

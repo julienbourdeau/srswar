@@ -9,6 +9,7 @@ import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -29,6 +30,7 @@ public class Panel extends JPanel implements GameListener{
 	protected Game game;
 	protected ButtonListener buttonListener;
 	protected CoordinatesPanel coordsPanel;
+	protected BoxLayout layout;
 	
 	protected class ButtonListener implements ActionListener {
 		protected Panel parent;
@@ -56,20 +58,23 @@ public class Panel extends JPanel implements GameListener{
 		endTurn.setActionCommand("endTurn");
 		endTurn.addActionListener(buttonListener);
 		
+		layout = new BoxLayout(this, BoxLayout.Y_AXIS);
+		//setLayout(layout);
+		
 		whoseTurn = new JLabel("Ready");
 		infopanel = new UnitInfoPanel(null);
 		optionsPanel = new OptionsPanel();
 		minimap = new MiniMap(g.getBoard(), g.getMinimap());
 		coordsPanel = new CoordinatesPanel();
 		
-		add(endTurn);
 		add(whoseTurn);
 		add(infopanel);
-		add(minimap);
 		add(coordsPanel);
 		add(optionsPanel);
+		add(minimap);
+		add(endTurn);
 		
-		setPreferredSize(new Dimension(200, 200));
+		setPreferredSize(new Dimension(250, 200));
 		
 		game = g;
 		game.addClient(this);

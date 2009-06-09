@@ -25,7 +25,7 @@ public class Map {
 			f = new RandomAccessFile(name, "r");
 		}catch(FileNotFoundException e)
 		{
-			f = new RandomAccessFile(new String("/home/kbok/jmax/maps/").concat(name), "r");
+			f = new RandomAccessFile(Path.getPath().concat("maps/").concat(name), "r");
 		}
 		palette = new int[256];
 	}
