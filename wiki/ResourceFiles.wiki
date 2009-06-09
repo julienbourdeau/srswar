@@ -4,9 +4,9 @@
 = Introduction =
 
 In order to run the game, you will need
-* Graphics for the game
-* Maps
-* Scenario files
+ * Graphics for the game
+ * Maps
+ * Scenario files
 
 = How to get them =
 
