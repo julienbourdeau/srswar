@@ -5,6 +5,8 @@ import java.awt.Image;
 import java.io.IOException;
 import java.util.Vector;
 
+import javax.swing.JOptionPane;
+
 import files.Map;
 import files.Scenario;
 import gui.BoardView;
@@ -74,6 +76,13 @@ public class Game {
 		notifyEndTurn();
 	}
 	
+	private void victory(String winner)
+	{
+		JOptionPane.showMessageDialog(null, winner.concat(" wins the game !"));
+		parent.setVisible(false);
+		System.exit(0);
+	}
+	
 	private void checkVictory()
 	{
 		int playersCount = 0;
@@ -86,7 +95,7 @@ public class Game {
 		{
 			for(int i=0; i<Player.count(); i++)
 				if(Player.getList().get(i).isEnabled())
-					System.out.println(Player.getList().get(i).getName().concat(" wins"));
+					victory(Player.getList().get(i).getName());
 		}
 	}
 

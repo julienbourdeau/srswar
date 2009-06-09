@@ -2,6 +2,7 @@ package graphics;
 
 import files.GraphicsFile;
 import files.IndexedImage;
+import files.Path;
 import gamelogic.units.Unit;
 import gamelogic.units.UnitIdentifier;
 
@@ -9,6 +10,7 @@ import java.awt.Cursor;
 import java.awt.Image;
 import java.awt.Point;
 import java.awt.Toolkit;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.RandomAccessFile;
@@ -51,7 +53,7 @@ public class ImageLibrary {
 	 */
 	protected ImageLibrary(){
 		try {
-			gFile = new GraphicsFile(new RandomAccessFile("/home/kbok/jmax/MAX.RES", "r"));
+			gFile = new GraphicsFile(new RandomAccessFile(Path.getPath().concat("MAX.RES"), "r"));
 			gFile.readIndex();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -71,20 +73,20 @@ public class ImageLibrary {
 		
 		try{
 			//bg = ImageIO.read(new URL("file:///home/kbok/jmax/grass.png"));
-			hit = ImageIO.read(new URL("file:///home/kbok/jmax/fx/hit.png"));
-			explo = ImageIO.read(new URL("file:///home/kbok/jmax/fx/explo_small.png"));
+			hit = ImageIO.read(new File(Path.getPath().concat("fx/hit.png")));
+			explo = ImageIO.read(new File("fx/explo_small.png"));
 			
-			small_numbers = ImageIO.read(new URL("file:///home/kbok/jmax/graphics/small_numbers.png"));
-			small_icons = ImageIO.read(new URL("file:///home/kbok/jmax/graphics/small_icons.png"));
-			small_labels = ImageIO.read(new URL("file:///home/kbok/jmax/graphics/small_labels.png"));
+			small_numbers = ImageIO.read(new File(Path.getPath().concat("graphics/small_numbers.png")));
+			small_icons = ImageIO.read(new File(Path.getPath().concat("graphics/small_icons.png")));
+			small_labels = ImageIO.read(new File(Path.getPath().concat("graphics/small_labels.png")));
 			
-			img_move = ImageIO.read(new URL("file:///home/kbok/jmax/gfx/move.png"));
-			img_shot = ImageIO.read(new URL("file:///home/kbok/jmax/gfx/attack.png"));
-			img_select = ImageIO.read(new URL("file:///home/kbok/jmax/gfx/select.png"));
-			img_not = ImageIO.read(new URL("file:///home/kbok/jmax/gfx/not.png"));
+			img_move = ImageIO.read(new File(Path.getPath().concat("gfx/move.png")));
+			img_shot = ImageIO.read(new File(Path.getPath().concat("gfx/attack.png")));
+			img_select = ImageIO.read(new File(Path.getPath().concat("gfx/select.png")));
+			img_not = ImageIO.read(new File(Path.getPath().concat("gfx/not.png")));
 			for(int i=0; i<8; i++)
-				scroll_img[i] = ImageIO.read(new URL(new String("file:///home/kbok/jmax/gfx/pf_")
-					.concat(String.valueOf(i)).concat(".png")));
+				scroll_img[i] = ImageIO.read(new File(new String(Path.getPath().concat("gfx/pf_")
+					.concat(String.valueOf(i)).concat(".png"))));
 				
 			move = Toolkit.getDefaultToolkit().createCustomCursor(img_move, new Point(0, 0), "");
 			shot = Toolkit.getDefaultToolkit().createCustomCursor(img_shot, new Point(0, 0), "");

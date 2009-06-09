@@ -11,8 +11,8 @@ import java.util.Vector;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
+import javax.swing.JLabel;
 import javax.swing.JList;
-import javax.swing.JTextField;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
@@ -27,7 +27,7 @@ public class ScenarioDialog extends JDialog implements ListSelectionListener, Ac
 	private static final long serialVersionUID = 1L;
 	
 	protected JList sList;
-	protected JTextField sDescr;
+	protected JLabel sDescr;
 	protected JButton OKButton;
 	protected String directory;
 	protected File[] files;
@@ -64,7 +64,7 @@ public class ScenarioDialog extends JDialog implements ListSelectionListener, Ac
 		
 		sList = new JList(names);
 		sList.addListSelectionListener(this);
-		sDescr = new JTextField();
+		sDescr = new JLabel();
 		OKButton = new JButton("OK");
 		OKButton.setActionCommand("OK");
 		OKButton.addActionListener(this);
