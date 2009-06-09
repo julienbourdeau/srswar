@@ -66,7 +66,7 @@ public class MiniMap extends JPanel implements MouseListener{
 		 {
 			 Unit u = board.getUnitAt(i, j);
 			 Color c;
-			 if(u != null)
+			 if((u != null) && view.getScannerMask()[i][j])
 			 {
 			 	c = u.getOwner().getColor();
 			 	map.setRGB(i, j, c.getRGB());

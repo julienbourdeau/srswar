@@ -653,4 +653,9 @@ public class BoardView extends Canvas implements GameListener{
 		deltaY = j;
 		updateBgBuffer = true;
 	}
+	
+	public boolean[][] getScannerMask()
+	{
+		return scanner_mask;
+	}
 }
