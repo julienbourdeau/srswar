@@ -61,7 +61,7 @@ public class MiniMap extends JPanel implements MouseListener{
 		
 		map.getGraphics().drawImage(emptyMap, 0, 0, null);
 		
-		if(view.getScannerMask() != null)
+		if(view != null) if(view.getScannerMask() != null)
 		for(int i=0; i<112; i++)
 		 for(int j=0; j<112; j++)
 		 {
