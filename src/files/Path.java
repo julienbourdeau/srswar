@@ -5,7 +5,7 @@ import java.io.FileNotFoundException;
 
 public class Path {
 	public static final String[] lookupPaths = { "/home/kbok/srswar/res/", "/home/kbok/srswar/res_moved/", "/usr/share/srswar/", "/usr/local/share/srswar/",  
-												 };
+												 "C:/srswar/"};
 	public static String path;
 	
 	public static String getPath() throws FileNotFoundException
