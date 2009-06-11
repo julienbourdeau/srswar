@@ -9,9 +9,6 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.util.Vector;
 
-import sound.SoundLibrary;
-import sound.SoundPlayer;
-
 /**
  * Provides a graphical representation of a unit of the BoardView.
  * @author kbok
@@ -24,7 +21,6 @@ public class UnitView implements BoardListener {
 	protected int pathIndex;
 	protected Options o;
 	protected Orientation or;
-	protected SoundPlayer soundPlayer;
 	protected boolean mustPlayDrive = false;
 	
 	protected float speed = 0;
@@ -77,14 +73,6 @@ public class UnitView implements BoardListener {
 				model.getPosition().y * o.zoom());
 		
 		if(curPath == null)	{
-			if(mustPlayDrive)
-			{
-				mustPlayDrive = false;
-				soundPlayer.enQueuePlay(SoundLibrary.getStreamByUnitAction(model.getIdent().getName(), "stop"));
-				soundPlayer.stop();
-				
-			}
-			
 			if(visible) draw(g, model, model.getPosition().x * o.zoom() - boardview.getDeltaX(),
 								model.getPosition().y * o.zoom() - boardview.getDeltaY(), o.zoom());
 		}else{
@@ -133,10 +121,6 @@ public class UnitView implements BoardListener {
 					curY+3 - boardview.getDeltaY(), o.zoom()-6, o.zoom()-6);
 		}
 		
-		if(mustPlayDrive && !soundPlayer.playing())
-		{
-			soundPlayer.play(SoundLibrary.getStreamByUnitAction(model.getIdent().getName(), "drive"));
-		}
 	}
 
 	public void destroy(Square dest) {
@@ -157,8 +141,6 @@ public class UnitView implements BoardListener {
 
 		or = computeOrientation();
 		if(or == null) or = Orientation.N;
-		if(soundPlayer != null)
-			soundPlayer.play(SoundLibrary.getStreamByUnitAction(model.getIdent().getName(), "start"));
 		mustPlayDrive = true;
 	}
 
@@ -166,15 +148,6 @@ public class UnitView implements BoardListener {
 		return Orientation.fromDxDy(
 				(int)Math.signum((curPath.get(pathIndex).x*o.zoom() - curX)/7),
 				(int)Math.signum((curPath.get(pathIndex).y*o.zoom() - curY)/7));
-	}
-	
-	/**
-	 * Not to use. The sound system is not ready.
-	 * @param p unused
-	 */
-	public void setSoundPlayer(SoundPlayer p)
-	{
-		soundPlayer = p;
 	}
 
 	/**

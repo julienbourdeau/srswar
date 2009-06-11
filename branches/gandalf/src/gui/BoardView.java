@@ -30,9 +30,6 @@ import java.util.Timer;
 import java.util.TimerTask;
 import java.util.Vector;
 
-import sound.SoundLibrary;
-import sound.SoundPlayer;
-
 /**
  * This is the main view of the game.
  * @author kbok
@@ -63,7 +60,6 @@ public class BoardView extends Canvas implements GameListener{
 	
 	protected Cursor curCursor;
 	
-	protected SoundPlayer soundPlayer;
 	protected int scrollX = 0;
 	protected int scrollY = 0;
 	
@@ -140,7 +136,6 @@ public class BoardView extends Canvas implements GameListener{
 		}
 
 		public void fire(Square source, Square dest) {
-			soundPlayer.play(SoundLibrary.getStreamByUnitAction(model.getUnitAt(source).getIdent().getName(), "attack"));
 			parent.fireNotify(source, dest);
 			somethingExploding = true;
 			explosionIndex = 0;
@@ -225,18 +220,12 @@ public class BoardView extends Canvas implements GameListener{
 		addMouseListener(listener);
 		addComponentListener(listener);
 		
-		soundPlayer = new SoundPlayer();
-		Thread soundThread = new Thread(soundPlayer);
-		soundThread.start();
-		SoundLibrary.load();
-		
 		units = new Vector<graphics.UnitView>();
 		for(int i=0; i<100; i++)
 			for(int j=0; j<100; j++)
 				if(model.getUnitAt(i, j) != null)
 				{
 					graphics.UnitView unit = new graphics.UnitView(model.getUnitAt(i, j), this, options);
-					unit.setSoundPlayer(soundPlayer);
 					units.add(unit);
 				}
 		
