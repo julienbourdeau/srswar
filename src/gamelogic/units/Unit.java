@@ -10,7 +10,7 @@ import gamelogic.Player;
 import gamelogic.Square;
 
 /**
- * @author kbok
+ * @author julien
  * Provides a global model for a single unit. These can be building, ground, water or air units.
  * Each unit inherits from this class and reimplements some methods.
  */

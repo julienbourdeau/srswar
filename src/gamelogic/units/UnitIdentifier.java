@@ -3,7 +3,7 @@ package gamelogic.units;
 import java.util.Vector;
 
 /**
- * @author kbok
+ * @author julien
  * Provides a way of identify the type of each unit and to get graphics and sound resource from it.
  */
 public class UnitIdentifier {
