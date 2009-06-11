@@ -141,7 +141,7 @@ public class IndexedImage {
 	
 	private void loadDefaultPalette() throws IOException
 	{
-		RandomAccessFile paletteFile = new RandomAccessFile("/home/kbok/maxr.pal", "r");
+		RandomAccessFile paletteFile = new RandomAccessFile(Path.getPath().concat("maxr.pal"), "r");
 		DEFAULT_PALETTE = new Palette();
 		for(int i=0; i<256; i++)
 		{
