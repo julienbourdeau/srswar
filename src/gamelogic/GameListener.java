@@ -1,7 +1,7 @@
 package gamelogic;
 
 /**
- * @author kbok
+ * @author julien
  * Provides an interface for objects who wants to be notified about game-wide events.
  */
 public interface GameListener {

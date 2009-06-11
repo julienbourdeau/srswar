@@ -6,10 +6,26 @@ import gamelogic.units.Unit;
 import java.util.Vector;
 
 /**
- * @author kbok
+ * @author julien
  * Provides a model for the main game board. The board is responsible of localizing units, 
  * check that only one unit is present is on square, and propagating fire, move, and destroy 
  * events. The size of the grid is always 100x100 as this is one of the rules of the games.
+ */
+/**
+ * @author Administrateur
+ *
+ */
+/**
+ * @author Administrateur
+ *
+ */
+/**
+ * @author Administrateur
+ *
+ */
+/**
+ * @author Administrateur
+ *
  */
 public class Board {
 	private Vector<BoardListener> clients;
@@ -26,7 +42,7 @@ public class Board {
 	}
 	
 	/**
-	 * 
+	 * Associate the map with the board.
 	 * @param m
 	 */
 	public void setMap(Map m)
@@ -140,6 +156,13 @@ public class Board {
 		setUnitAt(pos.x, pos.y, unit);
 	}
 	
+	
+	/**
+	 * Notify the game client of a move.
+	 * @param pos The current position of the unit
+	 * @param path The movement to go to the goal
+	 * @param unitClient The listener who receive the move event
+	 */
 	public void notifyMove(Square pos, Vector<Square> path, BoardListener unitClient)
 	{
 		for(int i=0; i<clients.size(); i++)
@@ -147,6 +170,13 @@ public class Board {
 		unitClient.move(pos, path);
 	}
 	
+	
+	/**
+	 * Notify the game of a shoot
+	 * @param source The square where the rocket come from
+	 * @param dest The square where the rocket going to
+	 * @param unitClient The listener who receive the move event
+	 */
 	public void notifyShot(Square source, Square dest, BoardListener unitClient)
 	{
 		for(int i=0; i<clients.size(); i++)
@@ -154,6 +184,11 @@ public class Board {
 		unitClient.fire(source, dest);
 	}
 	
+	/**
+	 * @param source The square where the flying unit come from
+	 * @param dest The square where the flying unit going to 
+	 * @param unitClient The listener who receive the move event
+	 */
 	public void notifyFly(Square source, Square dest, BoardListener unitClient)
 	{
 		for(int i=0; i<clients.size(); i++)
@@ -161,6 +196,11 @@ public class Board {
 		unitClient.fly(source, dest);
 	}
 	
+	/**
+	 * Notify a destruction of a unit to the boardlistener 
+	 * @param dest The position of the destroyed unit
+	 * @param unitClient The listener who receive the move event
+	 */
 	public void notifyDestroy(Square dest, BoardListener unitClient)
 	{
 		for(int i=0; i<clients.size(); i++)

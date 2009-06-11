@@ -3,7 +3,7 @@ package gamelogic;
 import java.util.Vector;
 
 /**
- * @author kbok
+ * @author julien
  * Provides an interface for a Board's client. The client is notified when a fire, a move, 
  * or a destroy occurs. The listener is then able to update his information about the board
  * without having to scan all the board.
