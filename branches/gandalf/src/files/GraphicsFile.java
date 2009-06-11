@@ -180,6 +180,10 @@ public class GraphicsFile {
 		return list;
 	}
 	
+	/**
+	 * Small class used for testing
+	 * @author kbok
+	 */
 	private class ImagePanel extends JPanel
 	{
 		private static final long serialVersionUID = 1L;

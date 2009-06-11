@@ -6,10 +6,10 @@ import java.io.RandomAccessFile;
 import files.GraphicsFile.Slice;
 
 /**
- * @author kbok
  * Provides implementation of a M.A.X. Multi-Image format reader.
  * This one provides no check on the validity of the image. Assume in case of an
  * error that the image is not a Multi-Image.
+ * @author kbok
  */
 public class MultiImage
 {

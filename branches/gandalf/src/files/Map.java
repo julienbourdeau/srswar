@@ -6,6 +6,10 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 
+/**
+ * Contains tools and routines used to read a map file (.wrl) and to represent it.
+ * @author kbok
+ */
 public class Map {
 	private RandomAccessFile f;
 	private int[] palette;
@@ -20,6 +24,11 @@ public class Map {
 	public static final int TYPE_COAST 	 = 2;
 	public static final int TYPE_BLOCKED = 3;
 	
+	/**
+	 * Creates a new Map object from the file which name is given.
+	 * @param name The name of the map file to load.
+	 * @throws FileNotFoundException If the file cannot be found in the resource directory.
+	 */
 	public Map(String name) throws FileNotFoundException {
 		try{
 			f = new RandomAccessFile(name, "r");
@@ -30,7 +39,7 @@ public class Map {
 		palette = new int[256];
 	}
 	
-	public void readSize() throws IOException
+	private void readSize() throws IOException
 	{
 		f.seek(5);
 		width = LittleEndianIO.readShort(f);
@@ -41,6 +50,11 @@ public class Map {
 		
 	}
 	
+	/**
+	 * Returns the minimap image read from the map file.
+	 * @return An Image object containing the minimap.
+	 * @throws IOException Error reading from the file.
+	 */
 	public Image getMiniMap() throws IOException
 	{
 		BufferedImage img = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
@@ -58,7 +72,7 @@ public class Map {
 		return img;
 	}
 	
-	public void readPalette() throws IOException
+	private void readPalette() throws IOException
 	{
 		f.seek(9+width*height*3);
 		short nTerrains = LittleEndianIO.readShort(f);
@@ -74,7 +88,7 @@ public class Map {
 		
 	}
 	
-	public void readTerrains() throws IOException
+	private void readTerrains() throws IOException
 	{
 		f.seek(9+width*height*3);
 		short nTerrains = LittleEndianIO.readShort(f);
@@ -94,7 +108,7 @@ public class Map {
 		}
 	}
 	
-	public void readData() throws IOException
+	private void readData() throws IOException
 	{
 		f.seek(9+width*height*3);
 		short nTerrains = LittleEndianIO.readShort(f);
@@ -120,6 +134,12 @@ public class Map {
 			}
 	}
 	
+	/**
+	 * Returns the tile image at the given coordinates.
+	 * @param x The X Coordinate of the tile
+	 * @param y The Y coordinate of the tile
+	 * @return A 64x64 Image containing the tile.
+	 */
 	public BufferedImage getTile(int x, int y)
 	{
 		try{
@@ -130,11 +150,21 @@ public class Map {
 		}
 	}
 	
+	/**
+	 * Returns the terrain type of the given tile, e.g. coast/ground/water
+	 * @param x The X Coordinate of the tile
+	 * @param y The Y coordinate of the tile
+	 * @return The terrain type, as an integer.
+	 */
 	public int getTerrainType(int x, int y)
 	{
 		return types[x][y];
 	}
 	
+	/**
+	 * Reads data from the file.
+	 * @throws IOException In case of error reading the file.
+	 */
 	public void readFully() throws IOException
 	{
 		readSize();
