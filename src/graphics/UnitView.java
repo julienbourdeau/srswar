@@ -12,6 +12,10 @@ import java.util.Vector;
 import sound.SoundLibrary;
 import sound.SoundPlayer;
 
+/**
+ * Provides a graphical representation of a unit of the BoardView.
+ * @author kbok
+ */
 public class UnitView implements BoardListener {
 	protected Unit model;
 	protected gui.BoardView boardview;
@@ -25,6 +29,12 @@ public class UnitView implements BoardListener {
 	
 	protected float speed = 0;
 	
+	/**
+	 * Creates a new UnitView for the given unit, on the BoardView board.
+	 * @param m The Unit represented by the constructed view
+	 * @param board The BoardView the unit belongs to
+	 * @param o The Options of the BoardView.
+	 */
 	public UnitView(Unit m, gui.BoardView board, Options o)
 	{
 		this.o = o;
@@ -37,11 +47,24 @@ public class UnitView implements BoardListener {
 	}
 	
 	/* for backward compatibility */
+	@Deprecated
+	/**
+	 * Draws the unit. Deprecated.
+	 * @param g Graphics to use.
+	 * @param u The Unit model.
+	 * @param x The x coordinate of the unit
+	 * @param y The y coordinate of the unit
+	 * @param size The size of the unit to draw
+	 */
 	public void draw(Graphics g, Unit u, int x, int y, int size)
 	{
 		g.drawImage(ImageLibrary.getImage(u, or), x, y, size, size, null);
 	}
 	
+	/**
+	 * Draws the unit of the given Graphics
+	 * @param g Graphics from paint() to use
+	 */
 	public void draw(Graphics g)
 	{
 		Rectangle r = boardview.getFrame();
@@ -145,11 +168,18 @@ public class UnitView implements BoardListener {
 				(int)Math.signum((curPath.get(pathIndex).y*o.zoom() - curY)/7));
 	}
 	
+	/**
+	 * Not to use. The sound system is not ready.
+	 * @param p unused
+	 */
 	public void setSoundPlayer(SoundPlayer p)
 	{
 		soundPlayer = p;
 	}
 
+	/**
+	 * @return The Model of the UnitView.
+	 */
 	public Unit model() {
 		return model;
 	}

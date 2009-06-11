@@ -139,61 +139,98 @@ public class ImageLibrary {
 			singleton = new ImageLibrary();
 	}
 	
+	/**
+	 * Returns the background to be used if no map is available.
+	 * @return The background of the BoardView.
+	 */
+	@Deprecated 
 	public static Image getBackground(){
 		checkSingleton();
 		return singleton.bg;
 	}
 
+	/**
+	 * @return The "shot" cursor
+	 */
 	public static Image getHit() {
 		checkSingleton();
 		return singleton.hit;
 	}
 		
+	/**
+	 * @return The "Move" cursor
+	 */
 	public static Cursor getCursorMove()
 	{
 		checkSingleton();
 		return singleton.move;
 	}
 	
+	/**
+	 * @return The "Select" cursor
+	 */
 	public static Cursor getCursorSelect()
 	{
 		checkSingleton();
 		return singleton.select;
 	}
 	
+	/**
+	 * @return The "Forbidden" cursor
+	 */
 	public static Cursor getCursorNot()
 	{
 		checkSingleton();
 		return singleton.not;
 	}
 	
+	/**
+	 * @return The "Shot" cursor
+	 */
 	public static Cursor getCursorShot()
 	{
 		checkSingleton();
 		return singleton.shot;
 	}
 	
+	/**
+	 * Returns the "scroll" cursors corresponding to the given orientation
+	 * @param o The orientation of the cursor
+	 * @return The Cursor object
+	 */
 	public static Cursor getCursorScroll(Orientation o)
 	{
 		checkSingleton();
 		return singleton.scrollers[o.toInt()];
 	}
 
+	/**
+	 * @return The image of the explosion
+	 */
 	public static Image getExplosion() {
 		checkSingleton();
 		return singleton.explo;
 	}
 	
+	/**
+	 * @return The small icons used in information panel
+	 */
 	public static Image getSmallIcons() {
 		checkSingleton();
 		return singleton.small_icons;
 	}
 	
+	/**
+	 * @return The small numbers used in information panel
+	 */
 	public static Image getSmallNumbers() {
 		checkSingleton();
 		return singleton.small_numbers;
 	}
 	
+	/**
+	 * @return The small labels used in information panel
+	 */
 	public static Image getSmallLabels() {
 		checkSingleton();
 		return singleton.small_labels;
