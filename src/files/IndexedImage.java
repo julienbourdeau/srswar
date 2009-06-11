@@ -139,6 +139,10 @@ public class IndexedImage {
 	}
 	
 	
+	/**
+	 * Loads the default palette from a	file in the resource folder
+	 * @throws IOException If there is an error with the file
+	 */
 	private void loadDefaultPalette() throws IOException
 	{
 		RandomAccessFile paletteFile = new RandomAccessFile(Path.getPath().concat("maxr.pal"), "r");

@@ -8,6 +8,10 @@ import java.io.IOException;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+/**
+ * These are test routines. Don't mind it.
+ * @author kbok
+ */
 public class Test {
 	@SuppressWarnings("unused")
 	private Image minimap;
@@ -38,10 +42,7 @@ public class Test {
 	
 	private void start() throws IOException
 	{
-		map.readSize();
-		map.readPalette();
-		map.readTerrains();
-		map.readData();
+		map.readFully();
 		minimap = map.getMiniMap();
 		
 		JFrame wnd = new JFrame();
