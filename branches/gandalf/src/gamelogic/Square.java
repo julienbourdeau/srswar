@@ -1,7 +1,7 @@
 package gamelogic;
 
 /**
- * @author kbok
+ * @author julien
  * Represents a Square in the board, that is, a single position containing or not
  * a unit.
  */

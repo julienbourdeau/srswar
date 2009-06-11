@@ -2,7 +2,6 @@ package gamelogic;
 
 import java.util.Vector;
 
-/* This is A-RockStar ! See Soul Eater #04 for details */
 /**
  * @author Julien
  * This class find a path to go from a square A to a square B. Not realy the best path but a path.

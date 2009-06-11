@@ -4,7 +4,7 @@ import java.awt.Color;
 import java.util.Vector;
 
 /**
- * @author kbok
+ * @author julien
  * Represents a player. A Player is characterized by its name, its color, and its
  * internal game ID. The ID also defines the order of playing.
  */
@@ -89,20 +89,38 @@ public class Player {
 		return (ID == other.ID);
 	}
 
+	/**
+	 * When you you play you watch your units. You press "end turn", the player 2 want
+	 * to see the last unit he watched, not yours. This method save this view.
+	 * @param s The square to set
+	 */
 	public void setView(Square s)
 	{
 		view = s;
 	}
 	
+	/**
+	 * See setView to get more explanation.
+	 * @return the last view of a player
+	 */
 	public Square getView()
 	{
 		return view;
 	}
 	
+	
+	/**
+	 * A player is disable when he can't play. For example if it's not is turn or maybe
+	 * all you have no unit available.
+	 */
 	public void disable() {
 		enabled = false;
 	}
 	
+	/**
+	 * See disable to know what is the "enable concept"
+	 * @return a boolean
+	 */
 	public boolean isEnabled()
 	{
 		return enabled;
