@@ -7,6 +7,10 @@ import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+/**
+ * Provides a panel to switch options for the board view.
+ * @author kbok
+ */
 public class OptionsPanel extends JPanel implements ActionListener{
 	private static final long serialVersionUID = 1L;
 	protected JButton gridToggle;
@@ -16,6 +20,9 @@ public class OptionsPanel extends JPanel implements ActionListener{
 	protected Options options;
 	protected BoxLayout layout;
 	
+	/**
+	 * Creates a new OptionsPanel.
+	 */
 	public OptionsPanel()
 	{
 		layout = new BoxLayout(this, BoxLayout.Y_AXIS);
@@ -42,6 +49,10 @@ public class OptionsPanel extends JPanel implements ActionListener{
 		this.add(colorToggle);
 	}
 	
+	/**
+	 * Associates the panel with the given options.
+	 * @param o The options to associate the panel with.
+	 */
 	public void setOptions(Options o)
 	{
 		options = o;

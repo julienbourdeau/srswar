@@ -16,8 +16,8 @@ import gui.BoardView.ViewRange;
 import javax.swing.JPanel;
 
 /**
- * @author kbok
  * Provides a global view of the map in a miniature version.
+ * @author kbok
  */
 public class MiniMap extends JPanel implements MouseListener{
 	private static final long serialVersionUID = 1L;
@@ -50,6 +50,10 @@ public class MiniMap extends JPanel implements MouseListener{
 		t.schedule(new Updater(), 0, 500);
 	}
 
+	/**
+	 * Sets the board view associated with the minimap.
+	 * @param v The BoardView to associate.
+	 */
 	public void setBoardView(BoardView v)
 	{
 		view = v;

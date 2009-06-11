@@ -12,6 +12,10 @@ import graphics.ImageLibrary;
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 
+/**
+ * Provides a widget to view the status of the currently selected unit.
+ * @author kbok
+ */
 public class UnitInfoPanel extends JPanel{
 	private static final long serialVersionUID = 1L;
 	
@@ -26,6 +30,10 @@ public class UnitInfoPanel extends JPanel{
 	
 	protected Unit unit;
 	
+	/**
+	 * Creates a new info panel and links it to the given unit. If unit equals null, 
+	 * Then the panel will not display information.
+	 */
 	public UnitInfoPanel(Unit u) {
 		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		
@@ -35,6 +43,11 @@ public class UnitInfoPanel extends JPanel{
 		setPreferredSize(new Dimension(160, 100));
 	}
 	
+	/**
+	 * Sets the unit to display information about. Set to null to display no
+	 * information.
+	 * @param u The unit model to inspect
+	 */
 	public void setUnit(Unit u)
 	{
 		unit = u;
@@ -128,6 +141,9 @@ public class UnitInfoPanel extends JPanel{
 		}
 	}
 	
+	/**
+	 * Reloads the information from the unit.
+	 */
 	public void flush() {
 		setUnit(unit);
 	}
