@@ -9,6 +9,10 @@ import gui.MainWindow;
 import gui.ScenarioDialog;
 import gui.ScenarioDialogListener;
 
+/**
+ * Main class used to run the game
+ * @author kbok
+ */
 public class Main implements ScenarioDialogListener {
 	public static void main(String[] args) throws IOException
 	{
