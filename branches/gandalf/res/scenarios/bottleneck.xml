@@ -1,0 +1,65 @@
+<?xml version="1.0" ?>
+<scenario name="Bottleneck">
+ <name>Bottleneck</name>
+ <description>Small battle scenario on the Bottleneck map.</description>
+ <world>Bottleneck.wrl</world>
+ <players>
+  <player id="0" name="Player 1" color="blue"/>
+  <player id="1" name="Player 2" color="red"/>
+ </players>
+ <board>
+  <!-- Player 1 units -->
+  <unit type="airtransport" owner="0"> <position x="20" y="50"/></unit>
+  
+  <unit type="tank" owner="0">    <position x="23" y="52"/></unit>
+  <unit type="tank" owner="0">    <position x="24" y="52"/></unit>
+  <unit type="tank" owner="0">    <position x="25" y="52"/></unit>
+  <unit type="tank" owner="0">    <position x="26" y="52"/></unit>
+  <unit type="assault" owner="0"> <position x="23" y="53"/></unit>
+  <unit type="assault" owner="0"> <position x="26" y="53"/></unit>
+  <unit type="repair" owner="0">  <position x="24" y="53"/></unit>
+  <unit type="appros" owner="0">  <position x="25" y="53"/></unit>
+  <unit type="rocket" owner="0">  <position x="24" y="54"/></unit>
+  <unit type="rocket" owner="0">  <position x="25" y="54"/></unit>
+  
+  <unit type="tank" owner="0">    <position x="18" y="43"/></unit>
+  <unit type="tank" owner="0">    <position x="18" y="44"/></unit>
+  <unit type="tank" owner="0">    <position x="18" y="45"/></unit>
+  <unit type="assault" owner="0"> <position x="16" y="44"/></unit>
+  <unit type="assault" owner="0"> <position x="16" y="45"/></unit>
+  <unit type="missile" owner="0"> <position x="15" y="44"/></unit>
+  <unit type="missile" owner="0"> <position x="15" y="45"/></unit>
+    
+  <unit type="scanner" owner="0"> <position x="21" y="48"/></unit>
+  <unit type="scout" owner="0">   <position x="20" y="47"/></unit>
+  <unit type="scout" owner="0">   <position x="20" y="48"/></unit>
+  <unit type="scout" owner="0">   <position x="19" y="47"/></unit>
+  <unit type="scout" owner="0">   <position x="19" y="48"/></unit>
+  
+  <!-- Player 2 Units -->
+  <unit type="tank" owner="1">    <position x="35" y="33"/></unit>
+  <unit type="tank" owner="1">    <position x="35" y="34"/></unit>
+  <unit type="tank" owner="1">    <position x="37" y="36"/></unit>
+  <unit type="tank" owner="1">    <position x="37" y="37"/></unit>
+  <unit type="tank" owner="1">    <position x="39" y="39"/></unit>
+  <unit type="tank" owner="1">    <position x="39" y="40"/></unit>
+
+  <unit type="assault" owner="1">    <position x="36" y="34"/></unit>
+  <unit type="assault" owner="1">    <position x="38" y="37"/></unit>
+  <unit type="assault" owner="1">    <position x="40" y="40"/></unit>
+  
+  <unit type="missile" owner="1">    <position x="36" y="33"/></unit>
+  <unit type="missile" owner="1">    <position x="38" y="36"/></unit>
+  <unit type="rocket" owner="1">     <position x="40" y="41"/></unit>
+  
+  <unit type="scout" owner="1">    <position x="37" y="34"/></unit>
+  <unit type="scout" owner="1">    <position x="39" y="37"/></unit>
+  <unit type="scout" owner="1">    <position x="41" y="40"/></unit>
+
+
+
+
+
+ </board>
+</scenario>
+ 
