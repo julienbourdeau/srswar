@@ -115,15 +115,24 @@ public class Panel extends JPanel implements GameListener{
 		infopanel.flush();
 	}
 
+	/**
+	 * @param boardview The boardView to associate to.
+	 */
 	public void setBoardView(BoardView boardview) {
 		minimap.setBoardView(boardview);
 	}
 	
+	/**
+	 * @return The coordinates panel.
+	 */
 	public CoordinatesPanel getCoordinatesPanel()
 	{
 		return coordsPanel;
 	}
 
+	/**
+	 * @param options The Options to associate to.
+	 */
 	public void setOptions(Options options) {
 		optionsPanel.setOptions(options);
 	}

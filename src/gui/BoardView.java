@@ -276,10 +276,19 @@ public class BoardView extends Canvas implements GameListener{
 		}
 	}
 
+	/**
+	 * Used when a shot occurs on the board.
+	 * @param source The place where the shot came from
+	 * @param dest The place where the shot occured
+	 */
 	public void fireNotify(Square source, Square dest) {
 		game.getPanel().flushInfo();
 	}
 
+	/**
+	 * Paints the content of the board view.
+	 */
+	@Deprecated
 	public void paint() {
 		Graphics g = bufferStrategy.getDrawGraphics();
 		paint(g);
@@ -288,12 +297,20 @@ public class BoardView extends Canvas implements GameListener{
 		
 	}
 
+	/**
+	 * Starts the timer which will fire a repaint event every epsilon milliseconds
+	 */
 	public void startTimer(){
 		updater = new Updater(this);
 		timer = new Timer();
 		timer.schedule(updater, 0, 20);
 	}
 	
+	/**
+	 * Used when w move occurs on the board.
+	 * @param source The source of the move
+	 * @param dest The destination of the unit.
+	 */
 	public void moveNotify(Square source, Square dest) {
 		if(source.equals(selectedUnit))
 		{
@@ -303,6 +320,11 @@ public class BoardView extends Canvas implements GameListener{
 		calculateScannerMask();
 	}
 	
+	/**
+	 * For future use. To call when a fly occurs on the board.
+	 * @param src The source of the move
+	 * @param dst The destination of the unit.
+	 */
 	public void flyNotify(Square src, Square dst) {
 		if(src.equals(selectedUnit))
 		{
@@ -312,6 +334,9 @@ public class BoardView extends Canvas implements GameListener{
 		calculateScannerMask();
 	}
 
+	/**
+	 * @return The bounds of the view. To use with the minimap, for instance.
+	 */
 	public Rectangle getFrame()
 	{
 		Rectangle r = new Rectangle();
@@ -458,6 +483,11 @@ public class BoardView extends Canvas implements GameListener{
 			}
 	}
 	
+	/**
+	 * Adds a zone to the visible zone.
+	 * @param center The center of the disk containing the added zone.
+	 * @param scanner The range of the scanner 
+	 */
 	public void addVisibility(Square center, int scanner)
 	{
 		int x=center.x;
@@ -471,14 +501,25 @@ public class BoardView extends Canvas implements GameListener{
 		
 	}
 	
+	/**
+	 * @return The associated options of the panel.
+	 */
 	public Options getOptions() {
 		return options;
 	}
 
+	/**
+	 * @param options The options to associate to the panel.
+	 */
 	public void setOptions(Options options) {
 		this.options = options;
 	}
 	
+	/**
+	 * Used when the mouse moves on the view.
+	 * @param x X Coordinate of the mouse
+	 * @param y Y Coordinate of the mouse
+	 */
 	public void notifyMove(int x, int y) {
 		int delta = 50;
 		int diff = delta;
@@ -561,7 +602,7 @@ public class BoardView extends Canvas implements GameListener{
 		scrollY = 5 * dy;
 	}
 
-	void leftclick(int x, int y)
+	private void leftclick(int x, int y)
 	{	
 		Square loc = new Square((x+deltaX)/options.zoom(), 
 				(y+deltaY)/options.zoom());
@@ -589,7 +630,7 @@ public class BoardView extends Canvas implements GameListener{
 		}
 	}
 
-	void rightclick(int x, int y)
+	private void rightclick(int x, int y)
 	{
 		Square loc = new Square((x+deltaX)/options.zoom(), 
 				(y+deltaY)/options.zoom());
@@ -606,11 +647,17 @@ public class BoardView extends Canvas implements GameListener{
 		return game.whoseTurn().equals(model.getUnitAt(loc).getOwner());
 	}
 
+	/**
+	 * Initializes graphics acceleration.
+	 */
 	public void initGraphics() {
 		createBufferStrategy(2);
 		bufferStrategy = getBufferStrategy();
 	}
 	
+	/**
+	 * Runs a paint-loop. Not used.
+	 */
 	public void loop() {
 		while(true)
 		{
@@ -623,11 +670,17 @@ public class BoardView extends Canvas implements GameListener{
 		}
 	}
 
+	/**
+	 * @return The X coordinate of the top-left corner of the viewport.
+	 */
 	public int getDeltaX() {
 		return deltaX;
 	}
 	
 	
+	/**
+	 * @return The Y coordinate of the top-left corner of the viewport.
+	 */
 	public int getDeltaY() {
 		return deltaY;
 	}
@@ -638,22 +691,36 @@ public class BoardView extends Canvas implements GameListener{
 		setDelta(options.zoom()*s.x, options.zoom()*s.y);
 	}
 
+	/**
+	 * @param map Sets the map associated with the view.
+	 */
 	public void setMap(Map map) {
 		this.map = map;
 	}
 	
+	/**
+	 * @return The range of Squares that are visible.
+	 */
 	public ViewRange getViewRange()
 	{
 		return new ViewRange(new Square(deltaX/options.zoom(), deltaY/options.zoom()),
 							new Square((deltaX+getWidth())/options.zoom(), (deltaY+getHeight())/options.zoom()));
 	}
 
+	/**
+	 * Sets the coordinates of the top-left corner of the viewport.
+	 * @param i X coordinate 
+	 * @param j Y coordinate
+	 */
 	public void setDelta(int i, int j) {
 		deltaX = i;
 		deltaY = j;
 		updateBgBuffer = true;
 	}
 	
+	/**
+	 * @return The mask of the visible and non-visible zones.
+	 */
 	public boolean[][] getScannerMask()
 	{
 		return scanner_mask;
