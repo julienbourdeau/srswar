@@ -15,7 +15,7 @@ import gui.Options;
 import gui.Panel;
 
 /**
- * @author kbok
+ * @author julien
  * Represents a game.
  * FIXME the Game model should not depend of the GUI view.
  * Maybe we should create interfaces or so.
@@ -30,6 +30,10 @@ public class Game {
 	private Map map;
 	protected Options options;
 	
+	/**
+	 * Build a new game, initialize parent (window), client, board, option.
+	 * @param p The main window
+	 */
 	public Game(MainWindow p)
 	{
 		parent = p;
@@ -38,6 +42,9 @@ public class Game {
 		options = new Options();
 	}
 	
+	/**
+	 * Launch the game.  
+	 */
 	public void start()
 	{
 		turn = 0;
