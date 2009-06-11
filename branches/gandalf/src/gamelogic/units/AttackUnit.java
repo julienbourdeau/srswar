@@ -4,7 +4,7 @@ import gamelogic.Player;
 import gamelogic.Square;
 
 /**
- * @author kbok
+ * @author julien
  * Provides a model for all units that can attack.
  */
 public class AttackUnit extends Unit{
