@@ -2,7 +2,16 @@ package gamelogic;
 
 import gamelogic.units.*;
 
+/**
+ * @author julien
+ * This class build all units.
+ */
 public class UnitFactory {
+	/**
+	 * @param name The name of a the unit to create
+	 * @param owner The player who create this unit
+	 * @return a new instance of the wanted unit
+	 */
 	public static gamelogic.units.Unit createUnitByName(String name, Player owner)
 	{
 		if(name.equals("appros")) return new Appros(owner);

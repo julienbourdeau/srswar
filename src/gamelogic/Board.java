@@ -11,22 +11,6 @@ import java.util.Vector;
  * check that only one unit is present is on square, and propagating fire, move, and destroy 
  * events. The size of the grid is always 100x100 as this is one of the rules of the games.
  */
-/**
- * @author Administrateur
- *
- */
-/**
- * @author Administrateur
- *
- */
-/**
- * @author Administrateur
- *
- */
-/**
- * @author Administrateur
- *
- */
 public class Board {
 	private Vector<BoardListener> clients;
 	protected gamelogic.units.Unit grid[][];
