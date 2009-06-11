@@ -44,9 +44,7 @@ public class MultiImage
 		count = LittleEndianIO.readShort(file);
 		count = 8;
 		
-		/* FIXME : FIXME : count */
-		int pleasePutMeAWarningHere;
-		
+		/* FIXME : count */
 		offsets = new int[count];
 		images = new IndexedImage[count];
 		for(int i=0; i<count; i++)
