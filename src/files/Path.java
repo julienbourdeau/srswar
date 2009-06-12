@@ -8,7 +8,7 @@ import java.io.FileNotFoundException;
  * @author kbok
  */
 public class Path {
-	public static final String[] lookupPaths = { "~/srswar/res/", "/usr/share/srswar/res/", "/usr/local/share/srswar/res/",  
+	public static final String[] lookupPaths = { "./res/", "/usr/share/srswar/res/", "/usr/local/share/srswar/res/",  
 												 "C:/srswar/"};
 	public static String path;
 	
