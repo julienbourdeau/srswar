@@ -1,6 +1,6 @@
 files
 gamelogic
+gamelogic.units
 graphics
 gui
 main
-sound
