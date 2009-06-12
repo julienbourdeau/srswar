@@ -20,6 +20,6 @@ public class MainWindow extends JFrame{
 	public MainWindow(int width, int height)
 	{
 		getContentPane().setPreferredSize(new Dimension(width, height));
-		setTitle("J.M.A.X.");
+		setTitle("Serious War");
 	}
 }
