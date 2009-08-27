@@ -153,7 +153,7 @@ public class IndexedImage {
 			r = paletteFile.readByte();
 			g = paletteFile.readByte();
 			b = paletteFile.readByte();
-			DEFAULT_PALETTE.contents[i] = 0xff << 24 | r << 16 | g << 8 | b;
+			DEFAULT_PALETTE.contents[i] = 0xff << 24 | ((r << 16) & 0xff0000) | (g << 8 & 0xff00) | (b & 0xff);
 		}
 		
 		DEFAULT_PALETTE.contents[0] = 0;
