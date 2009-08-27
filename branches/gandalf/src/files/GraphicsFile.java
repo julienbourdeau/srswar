@@ -19,7 +19,7 @@ public class GraphicsFile {
 	private RandomAccessFile file;
 	private int off_index;
 	private Vector<Slice> index;
-	
+
 	/**
 	 * @author kbok
 	 * Represents a file in the archive file. They are represented by an offset
@@ -30,7 +30,7 @@ public class GraphicsFile {
 		byte name[];
 		int offset;
 		int size;
-		
+
 		/**
 		 * Creates a new Slice using the given name, offset, and length.
 		 * @param n An 8-byte name string.
@@ -43,7 +43,7 @@ public class GraphicsFile {
 			offset = o;
 			size = s;
 		}
-		
+
 		/**
 		 * Compares the name of the slice with another's. It is useful for
 		 * loading named resources.
@@ -54,9 +54,9 @@ public class GraphicsFile {
 		{
 			for(int i=0; i<8 && i<b.length; i++)
 				if(b[i] != name[i]) return false;
-			return true;	
+			return true;
 		}
-		
+
 		/**
 		 * Returns its name, as a String object.
 		 * @return The name of the Slice.
@@ -64,17 +64,17 @@ public class GraphicsFile {
 		public String getNameString()
 		{
 			String s = null;
-			
+
 			try {
 				s = new String(name, "US-ASCII");
 			} catch (UnsupportedEncodingException e) {
 				e.printStackTrace();
-			} 
-			
+			}
+
 			return s;
 		}
 	}
-	
+
 	/**
 	 * Creates a new GraphicsFile using the given already-created
 	 * RandomAccessFile referencing MAX.RES.
@@ -85,7 +85,7 @@ public class GraphicsFile {
 		file = f;
 		index = new Vector<Slice>();
 	}
-	
+
 	/**
 	 * Reads the names and offsets index, and save it.
 	 * @throws IOException In case of an error reading MAX.RES.
@@ -94,22 +94,22 @@ public class GraphicsFile {
 	{
 		file.seek(4);
 		off_index = LittleEndianIO.readInt(file);
-		
+
 		file.seek(off_index);
-		
+
 		try{while(true)
 		{
 			byte name[] = new byte[8];
 			file.read(name);
 			int offset = LittleEndianIO.readInt(file);
 			int size = LittleEndianIO.readInt(file);
-		
+
 			Slice s = new Slice(name, offset, size);
 			index.add(s);
 		}}catch(EOFException e)
 		{}
 	}
-	
+
 	/**
 	 * Returns the slice corresponding to the given name.
 	 * @param name The name of the slice we're looking for.
@@ -120,10 +120,10 @@ public class GraphicsFile {
 		for(int i=0; i<index.size(); i++)
 			if(index.get(i).nameEquals(name))
 				return index.get(i);
-		
+
 		return null;
 	}
-	
+
 	/**
 	 * Returns the slice corresponding to the given name, which is given as a
 	 * String object. Useful for using directly with a String literal.
@@ -134,7 +134,7 @@ public class GraphicsFile {
 	{
 		return getSlice(name.getBytes());
 	}
-	
+
 	/**
 	 * Returns a IndexedImage array of the Multi-Image whose name is given.
 	 * @param name The name of the Multi-Image we're looking for.
@@ -147,7 +147,7 @@ public class GraphicsFile {
 		MultiImage i = new MultiImage(file, s);
 		return i.read();
 	}
-	
+
 	/**
 	 * Returns the String content of the given file.
 	 * @param name The name of the file.
@@ -159,14 +159,14 @@ public class GraphicsFile {
 		Slice s = getSlice(name);
 		if(s.size > 14) throw new IOException("Invalid Format");
 		byte[] array = new byte[s.size];
-		
+
 		file.seek(s.offset);
 		file.read(array);
-		
+
 		array[array.length-1] = ' ';
 		return new String(array, "US-ASCII");
 	}
-	
+
 	/**
 	 * Returns a Vector object containing all the names of the files, as String
 	 * objects.
@@ -179,7 +179,7 @@ public class GraphicsFile {
 			list.add(index.get(i).getNameString());
 		return list;
 	}
-	
+
 	/**
 	 * Small class used for testing
 	 * @author kbok
@@ -188,18 +188,18 @@ public class GraphicsFile {
 	{
 		private static final long serialVersionUID = 1L;
 		IndexedImage[] imgs;
-		
+
 		ImagePanel(IndexedImage[] imgs)
 		{
 			this.imgs = imgs;
 		}
-		
+
 		public void paint(Graphics g)
 		{
 			g.drawImage(imgs[0].withPalette(IndexedImage.DEFAULT_PALETTE), 0, 0, null);
 		}
 	}
-	
+
 	/**
 	 * For testing purposes.
 	 * @param args
@@ -213,7 +213,7 @@ public class GraphicsFile {
 		System.out.print("File Offset: ");
 		System.out.println(airtrans.offset);
 		IndexedImage[] imgs = f.getMultiImage("AIRTRANS");
-		
+
 		JFrame frame = new JFrame();
 		ImagePanel panel = f.new ImagePanel(imgs);
 		frame.getContentPane().add(panel);
