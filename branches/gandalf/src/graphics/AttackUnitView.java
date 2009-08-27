@@ -18,7 +18,6 @@ public class AttackUnitView extends UnitView{
 	 */
 	public AttackUnitView(Unit m, BoardView board, Options o) {
 		super(m, board, o);
-		// TODO Auto-generated constructor stub
 	}
 
 }

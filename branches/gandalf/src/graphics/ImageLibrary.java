@@ -55,7 +55,6 @@ public class ImageLibrary {
 			gFile = new GraphicsFile(new RandomAccessFile(Path.getPath().concat("MAX.RES"), "r"));
 			gFile.readIndex();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -107,7 +106,6 @@ public class ImageLibrary {
 			imgs = gFile.getMultiImage(ident);
 			array[o.toInt()] = imgs[o.toInt()].withPalette(IndexedImage.DEFAULT_PALETTE);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
