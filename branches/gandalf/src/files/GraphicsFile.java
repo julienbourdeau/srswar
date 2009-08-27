@@ -207,13 +207,13 @@ public class GraphicsFile {
 	 */
 	public static void main(String[] args) throws IOException
 	{
-		GraphicsFile f = new GraphicsFile(new RandomAccessFile("/home/kbok/MAX.RES", "r"));
+		GraphicsFile f = new GraphicsFile(new RandomAccessFile("/home/kbok/srswar/res/MAX.RES", "r"));
 		f.readIndex();
 		Slice airtrans = f.getSlice("AIRTRANS");
 		System.out.print("File Offset: ");
 		System.out.println(airtrans.offset);
 		IndexedImage[] imgs = f.getMultiImage("AIRTRANS");
-
+		
 		JFrame frame = new JFrame();
 		ImagePanel panel = f.new ImagePanel(imgs);
 		frame.getContentPane().add(panel);
