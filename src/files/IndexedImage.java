@@ -1,8 +1,6 @@
 package files;
 
 import java.awt.image.BufferedImage;
-import java.io.IOException;
-import java.io.RandomAccessFile;
 
 /**
  * @author kbok
@@ -15,6 +13,7 @@ import java.io.RandomAccessFile;
  * these images.
  */
 public class IndexedImage {
+
 	public static Palette DEFAULT_PALETTE;
 	private int[][] data;
 	private int hotspotX, hotspotY;
@@ -50,13 +49,8 @@ public class IndexedImage {
 	public IndexedImage(int[][] img)
 	{
 		if(DEFAULT_PALETTE == null)
-		{
-			try {
-				loadDefaultPalette();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
+			loadDefaultPalette();
+
 		data = img;
 	}
 	
@@ -68,13 +62,8 @@ public class IndexedImage {
 	public IndexedImage(int width, int height)
 	{
 		if(DEFAULT_PALETTE == null)
-		{
-			try {
-				loadDefaultPalette();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
+			loadDefaultPalette();
+
 		data = new int[height][];
 		for(int i=0; i<height; i++)
 			data[i] = new int[width];
@@ -139,16 +128,16 @@ public class IndexedImage {
 	}
 	
 	
-	private void loadDefaultPalette() throws IOException
+	private void loadDefaultPalette()
 	{
-		RandomAccessFile paletteFile = new RandomAccessFile(Path.getPath().concat("maxr.pal"), "r");
 		DEFAULT_PALETTE = new Palette();
+                int index = 0;
 		for(int i=0; i<256; i++)
 		{
 			byte r, g, b;
-			r = paletteFile.readByte();
-			g = paletteFile.readByte();
-			b = paletteFile.readByte();
+			r = (byte) DefaultPalette.values[index++];
+			g = (byte) DefaultPalette.values[index++];
+			b = (byte) DefaultPalette.values[index++];
 			DEFAULT_PALETTE.contents[i] = 0xff << 24 | r << 16 | g << 8 | b;
 		}
 		
