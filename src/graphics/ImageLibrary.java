@@ -84,8 +84,8 @@ public class ImageLibrary {
 			img_select = ImageIO.read(new File(Path.getPath().concat("gfx/select.png")));
 			img_not = ImageIO.read(new File(Path.getPath().concat("gfx/not.png")));
 			for(int i=0; i<8; i++)
-				scroll_img[i] = ImageIO.read(new File(new String(Path.getPath().concat("gfx/pf_")
-					.concat(String.valueOf(i)).concat(".png"))));
+				scroll_img[i] = ImageIO.read(new File(Path.getPath().concat("gfx/pf_")
+					.concat(String.valueOf(i)).concat(".png")));
 				
 			move = Toolkit.getDefaultToolkit().createCustomCursor(img_move, new Point(0, 0), "");
 			shot = Toolkit.getDefaultToolkit().createCustomCursor(img_shot, new Point(0, 0), "");
