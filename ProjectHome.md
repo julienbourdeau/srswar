@@ -1,0 +1,2 @@
+Serious war is a remake of the 90's M.A.X. (Mechanized Assault and eXploration) game from interplay.
+The final goal is to implement all of the original game's features, except support for old technologies like IPX, and to enable the program to run a subset of the game as Java applet or on mobile phones.
